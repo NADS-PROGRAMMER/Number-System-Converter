@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+  color: whitesmoke;
+}
+
+body {
+  background: #171717;
+}
+
+@mixin mediaQuery($screenSize) {
+  @media only screen and (min-width: $screenSize) {
+    @content;
+  }
+}
+@mixin displayFlex($flex-direction, $align-items, $justify-content) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  @content;
+}
+
+header h1 {
+  text-align: center;
+}
+
+.myApp {
+  @include displayFlex(column, none, center);
+  height: 100vh;
+}
+
+.converter {
+  @include displayFlex(column, none, center);
+  padding: 1rem;
+  gap: 10px;
+  @include mediaQuery(768px) {
+    width: 50vw;
+    margin: 0 auto;
+  }
+  @include mediaQuery(992px) {
+    width: 40vw;
+  }
+  @include mediaQuery(1200px) {
+    width: 30vw;
+  }
+}
+
+.dropdown {
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  color: #171717;
+  * {
+    color: #171717;
+  }
+}
+
+.textfield-section {
+  @include displayFlex(column, none, none);
+  input[type="text"] {
+    font-size: clamp(1.3rem, 2vw, 2rem);
+    color: #171717;
+  }
+}
+
+.result {
+  section {
+    margin-bottom: 1rem;
+    p {
+      font-size: clamp(1.1rem, 2vw, 2rem);
+      font-weight: bold;
+    }
+    small {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 600;
+    }
+  }
+}
