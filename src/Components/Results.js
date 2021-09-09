@@ -1,5 +1,5 @@
 import React from 'react'
-import {toDecimal, toHexadecimal, toOctal} from '../Javascripts/Binary';
+import Binary from '../Javascripts/Binary';
 
 function Results({dropdownValue, textfieldValue}) {
 
@@ -7,9 +7,9 @@ function Results({dropdownValue, textfieldValue}) {
     return (
         <div className="result"  >
             <Result title="Binary" dropdownValue={dropdownValue}/>
-            <Result title="Decimal" dropdownValue={dropdownValue} convertedValue={toDecimal(textfieldValue)}/>
-            <Result title="Octal" dropdownValue={dropdownValue} convertedValue={toOctal(textfieldValue)}/>
-            <Result title="Hexadecimal" dropdownValue={dropdownValue} convertedValue={toHexadecimal(textfieldValue)}/>
+            <Result title="Decimal" dropdownValue={dropdownValue} convertedValue={Binary.toDecimal(textfieldValue)}/>
+            <Result title="Octal" dropdownValue={dropdownValue} convertedValue={Binary.toOctal(textfieldValue)}/>
+            <Result title="Hexadecimal" dropdownValue={dropdownValue} convertedValue={Binary.toHexadecimal(textfieldValue)}/>
         </div>
     )
 }

@@ -1,95 +1,96 @@
 "use strict"
 
-function toDecimal(binary) {
+class Binary {
 
-    let myBinary = Array.from(binary)
-    const BASE = 2;
-    let pow = 0;
-    let decimal = 0;
+    static toDecimal = (binary) => {
 
-    for (let i = myBinary.length - 1; i >= 0; i--) {
+        let myBinary = Array.from(binary)
+        const BASE = 2;
+        let pow = 0;
+        let decimal = 0;
 
-        let bit = myBinary[i]
+        for (let i = myBinary.length - 1; i >= 0; i--) {
 
-        if (bit === '1')
-            decimal += Math.pow(BASE, pow)
+            let bit = myBinary[i]
 
-        pow++
+            if (bit === '1')
+                decimal += Math.pow(BASE, pow)
+
+            pow++
+        }
+        return decimal === 0 ? '' : decimal
     }
 
+    static toOctal = (binary) => {
 
-    return decimal === 0 ? '' : decimal
-}
+        let decimalValue = Binary.toDecimal(binary)
+        let octal = '';
 
-function toOctal(binary) {
+        while (decimalValue > 0) {
 
-    let decimalValue = toDecimal(binary)
-    let octal = '';
-
-    while (decimalValue > 0) {
-
-        octal += String(decimalValue % 8);
-        decimalValue = Math.trunc(decimalValue/8)
-    }
-
-    function reverse(octal) {
-
-        let reverseValue = ''
-
-        for (let i = octal.length - 1; i >= 0; i--) {
-            reverseValue += octal[i];
+            octal += String(decimalValue % 8);
+            decimalValue = Math.trunc(decimalValue/8)
         }
 
-        return reverseValue
-    }
-    return reverse(octal);
-}
+        function reverse(octal) {
 
-function getHex(decimal) {
+            let reverseValue = ''
 
-    switch(decimal) {
-        case 10: return 'A'; 
-        case 11: return 'B'; 
-        case 12: return 'C';
-        case 13: return 'D';
-        case 14: return 'E'; 
-        case 15: return 'F';  
-    }
-    return decimal;
-}
-
-function toHexadecimal(binary) {
-
-    function sliceToBinary() {
-
-        let divided = []
-        let currArray = []
-
-        for (let i = binary.length - 1; i >= 0; i-=4) {
-
-            currArray = []
-
-            for (let j = i; j >= (i-3); j--) {
-
-                if (binary[j] === undefined)
-                    break;
-
-                currArray.push(binary[j])
+            for (let i = octal.length - 1; i >= 0; i--) {
+                reverseValue += octal[i];
             }
-            
-            divided.push(currArray)
+
+            return reverseValue
         }
-        return divided
+        return reverse(octal);
     }
-    
-    let hexadecimalValue = ''
-    let divided = sliceToBinary()
 
-    for (let i = divided.length - 1; i >= 0; i--) {
+    static toHexadecimal = (binary) => {
 
-        hexadecimalValue += getHex(toDecimal(divided[i].reverse()))    
+        function sliceToBinary() {
+
+            let divided = []
+            let currArray = []
+
+            for (let i = binary.length - 1; i >= 0; i-=4) {
+
+                currArray = []
+
+                for (let j = i; j >= (i-3); j--) {
+
+                    if (binary[j] === undefined)
+                        break;
+
+                    currArray.push(binary[j])
+                }
+                
+                divided.push(currArray)
+            }
+            return divided
+        }
+        
+        function getHex(decimal) {
+
+            switch(decimal) {
+                case 10: return 'A'; 
+                case 11: return 'B'; 
+                case 12: return 'C';
+                case 13: return 'D';
+                case 14: return 'E'; 
+                case 15: return 'F';  
+            }
+            return decimal;
+        }
+
+        let hexadecimalValue = ''
+        let divided = sliceToBinary()
+
+        for (let i = divided.length - 1; i >= 0; i--) {
+
+            hexadecimalValue += getHex(Binary.toDecimal(divided[i].reverse()))    
+        }
+        return hexadecimalValue
     }
-    return hexadecimalValue
 }
 
-export {toDecimal, toOctal, toHexadecimal};
+export default Binary;
