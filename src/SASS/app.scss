@@ -28,6 +28,11 @@ body {
   @content;
 }
 
+.converter-container {
+  @include displayFlex(column, center, center);
+  min-height: 100vh;
+}
+
 header {
   margin-bottom: 1.1rem;
   h1 {
@@ -98,7 +103,7 @@ header {
       font-weight: bold;
     }
     .result-section {
-      @include displayFlex(row, flex-start, none) {
+      @include displayFlex(row, flex-start, flex-start) {
         flex-wrap: wrap;
       }
       small:nth-child(1) {
@@ -123,12 +128,18 @@ header {
 
 footer {
   @include displayFlex(column, center, none);
-  margin: 1.5rem 0;
+  background: black;
   gap: 10px;
+  width: 100vw;
+  padding: 2rem;
   section {
-    @include displayFlex(column, center, none);
-    p {
+    @include displayFlex(column, center, center);
+    * {
+      text-align: center;
+    }
+    .footer-caption {
       font-weight: bold;
+      color: rgb(255, 212, 94);
     }
   }
 

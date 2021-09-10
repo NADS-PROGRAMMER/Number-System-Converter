@@ -5,6 +5,7 @@ function Footer() {
     return (
         <footer>
             <section>
+                <p className="footer-caption">This is my 2nd React.js Project. Follow me on my #100DaysOfCode Journey</p>
                 <p>Created by: Nads Marcelo</p>
                 <small>All Rights Reserved</small>
             </section>
