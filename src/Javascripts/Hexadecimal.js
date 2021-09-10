@@ -1,9 +1,12 @@
 "use strict"
 
-import Decimal from './Decimal'
+import Decimal from './Decimal' // We need to import the Decimal class to reuse some of its functions.
 
 class Hexadecimal {
     
+    /**
+     * A function that evaluates the hexadecimal value.
+     */
     static getHex = (hex) => {
 
         switch(hex) {
@@ -17,6 +20,12 @@ class Hexadecimal {
         return hex;
     }
 
+    /**
+     * ===============================
+     * A function that converts the Hexadecimal value
+     * to Binary value.
+     * ===============================
+     */
     static toBinary = (hexadecimal) => {
 
         let decimal = Hexadecimal.toDecimal(hexadecimal)
@@ -24,6 +33,12 @@ class Hexadecimal {
         return Decimal.toBinary(decimal)
     }
 
+    /**
+     * ===============================
+     * A function that converts the Hexadecimal value
+     * to Decimal value.
+     * ===============================
+     */
      static toDecimal = (hexadecimal) => {
 
         const BASE = 16
@@ -31,12 +46,19 @@ class Hexadecimal {
         let pow = 0
 
         for (let i = hexadecimal.length - 1; i >= 0; i--) {
+            // We need to uppercase to still evaluate when the user inputs a lowercase letters.
             decimal += (Hexadecimal.getHex(String(hexadecimal[i].toUpperCase())) * Math.pow(BASE, pow))
             pow++
         }
         return decimal !== 0 ? decimal : ''
      }
 
+     /**
+      * ===============================
+      * A function that converts the Hexadecimal value
+      * to an Octal value.
+      * ===============================
+      */
      static toOctal = (hexadecimal) => {
          
         let decimal = Hexadecimal.toDecimal(hexadecimal)

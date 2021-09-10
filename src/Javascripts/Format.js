@@ -1,5 +1,16 @@
 "use strict"
 
+/**
+ * ===============================
+ * This is the functions that needed 
+ * to format the result of the program.
+ * ===============================
+ */
+
+/**
+ * A function that slices the passed
+ * value to a specified number of slices.
+ */
 function sliceValue(value, noOfSlice) {
 
     let divided = []
@@ -22,6 +33,18 @@ function sliceValue(value, noOfSlice) {
     return divided
 }
 
+/**
+ * ===============================
+ * A function that formats the binary value.
+ * 
+ * Ex. 
+ * instead of 1001101
+ * 
+ * We're going to do this:
+ * 
+ * -> 0100 1101
+ * ===============================
+ */
 export const formatBinary = (binary) => {
 
     let formattedBinary = sliceValue(binary, 4).reverse()
@@ -35,11 +58,22 @@ export const formatBinary = (binary) => {
             currentBits += formattedBinary[i][j]
         }
 
+        // When the currentBits' length is less than 4, we have to pad zero to start based on the needed padding.
         result += (currentBits.length < 4) ? currentBits.padStart(4, "0") + ' ' : currentBits + ' '
     }
     return result
 }
 
+/**
+ * A function that formats the given decimal value.
+ * 
+ * Ex:
+ * instead of 1203
+ * 
+ * We do this:
+ * 
+ * -> 1,203
+ */
 export const formatDecimal = (decimal) => {
 
     // formatter to have a comma.
@@ -48,6 +82,18 @@ export const formatDecimal = (decimal) => {
     return decimal !== '' ? formatter.format(decimal) : ''
 }
 
+/**
+ * ===============================
+ * A function that formats the octal value
+ * 
+ * Ex: 
+ * Instead of 6791
+ * 
+ * We do this:
+ * 
+ * -> 6 791
+ * ===============================
+ */
 export const formatOctal = (octal) => {
 
     let formattedOctal = sliceValue(octal, 3).reverse()
@@ -64,6 +110,18 @@ export const formatOctal = (octal) => {
     return result;
 }
 
+/**
+ * ===============================
+ * A function that formats the hexadecimal value
+ * 
+ * Ex: 
+ * instead of FFA1FFCD
+ * 
+ * We do this
+ * 
+ * -> FFA1 FFCD
+ * ===============================
+ */
 export const formatHexadecimal = (hexadecimal) => {
 
     let formattedHexadecimal = sliceValue(hexadecimal, 4).reverse()

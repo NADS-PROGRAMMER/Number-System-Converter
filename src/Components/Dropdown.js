@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Dropdown({dropdownValue, setDropDownValue}) {
+function Dropdown({setDropDownValue}) {
 
     const options = ['Binary', 'Octal', 'Decimal', 'Hexadecimal']
 

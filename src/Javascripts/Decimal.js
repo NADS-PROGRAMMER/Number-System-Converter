@@ -2,6 +2,11 @@
 
 class Decimal {
 
+    /**
+     * ===============================
+     * A function that reverse the passed value.
+     * ===============================
+     */
     static reverse = (value) => {
         let reversedValue = ''
 
@@ -12,6 +17,15 @@ class Decimal {
         return reversedValue
     }
 
+    /**
+     * ===============================
+     * A function that divides the
+     * parameter based on the second parameter.
+     * 
+     * Example is when solving for Decimal to
+     * Octal, the BASE must be 8.
+     * ===============================
+     */
     static divide = (decimal, BASE) => {
 
         let newValue = ''
@@ -24,6 +38,12 @@ class Decimal {
         return newValue
     } 
 
+    /**
+     * ===============================
+     * A function that converts the Decimal value to 
+     * a Decimal value.
+     * ===============================
+     */
     static toBinary = (decimal) => {
 
         const BASE = 2
@@ -31,6 +51,12 @@ class Decimal {
         return Decimal.reverse(Decimal.divide(decimal, BASE))
     }
 
+    /**
+     * ===============================
+     * A function that converts the Decimal value
+     * to an Octal value.
+     * ===============================
+     */
     static toOctal = (decimal) => {
 
         const BASE = 8
@@ -38,11 +64,26 @@ class Decimal {
         return Decimal.reverse(Decimal.divide(decimal, BASE))
     }
 
+    /**
+     * ===============================
+     * A function that converts the Decimal value
+     * to a Hexadecimal value.
+     * ===============================
+     */
     static toHexadecimal = (decimal) => {
 
         const BASE = 16
         let hexadecimal = ''
 
+        /**
+         * Since the value is from Decimal
+         * we need to evaluate the value as a hexadec
+         * if it is greater than 9.
+         * 
+         * Example is 
+         * A = 10
+         * B = 11 and so on...
+         */
         function getHex(decimal) {
 
             switch(decimal) {

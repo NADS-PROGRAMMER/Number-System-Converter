@@ -1,3 +1,4 @@
+// THESE ARE ALL MY IMPORTS
 import React, {useState, useEffect} from 'react'
 import Dropdown from './Dropdown'
 import Textfield from './Textfield'
@@ -9,11 +10,30 @@ import Hexadecimal from '../Javascripts/Hexadecimal'
 
 function Converter() {
 
+    /**
+     * =================================
+     * This state is for the previous value of 
+     * the dropdown. Once the user changes the 
+     * dropdown (<select> tag), the value
+     * gets change.
+     * ================================= */
     const [prevDropdownValue, setPreviousDropdownValue] = useState('Binary')
+
+    /**
+     * =================================
+     * This state is for the current value
+     * of the dropdown menu.
+     * ================================= */
     const [dropdownValue, setDropDownValue] = useState('Binary')
+
+
     const [textfieldValue, setTextfieldValue] = useState('');
 
-
+    /**
+     * ================================
+     * useEffect for changing the dropdown
+     * value while textfield is not empty.
+     * ================================ */
     useEffect(() => {
 
         setPreviousDropdownValue(dropdownValue)
@@ -55,7 +75,7 @@ function Converter() {
     return (
         
         <div className="converter">
-            <Dropdown dropdownValue={dropdownValue} setDropDownValue={setDropDownValue} />       
+            <Dropdown setDropDownValue={setDropDownValue} />       
             <Textfield dropdownValue={dropdownValue} textfieldValue={textfieldValue} setTextfieldValue={setTextfieldValue}/>
             <Results dropdownValue={dropdownValue} textfieldValue={textfieldValue}/>
         </div>

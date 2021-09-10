@@ -2,10 +2,16 @@
 
 class Binary {
 
+    /**
+     * ===============================
+     * A function that converts the Binary
+     * value to Decimal.
+     * ===============================
+     */
     static toDecimal = (binary) => {
 
-        let myBinary = Array.from(binary)
         const BASE = 2;
+        let myBinary = Array.from(binary)
         let pow = 0;
         let decimal = 0;
 
@@ -13,6 +19,7 @@ class Binary {
 
             let bit = myBinary[i]
 
+            // Only 'ON' bit gets evaluated.
             if (bit === '1')
                 decimal += Math.pow(BASE, pow)
 
@@ -21,8 +28,15 @@ class Binary {
         return decimal === 0 ? '' : decimal
     }
 
+
+    /**
+     * ================================
+     * A function that converts the Binary
+     * value into Octal.
+     * ================================
+     */
     static toOctal = (binary) => {
-        // 1 0100 1101 1001
+
         let decimalValue = Binary.toDecimal(binary)
         let octal = '';
 
@@ -45,8 +59,20 @@ class Binary {
         return reverse(octal);
     }
 
+
+    /**
+     * ===============================
+     * A function that converts the Binary
+     * value into Hexadecimal.
+     * ===============================
+     */
     static toHexadecimal = (binary) => {
 
+        /**
+         * A function that slices the binary
+         * into 4 pieces.
+         * 
+         * @returns a 2D array containing the sliced bits. */
         function sliceToBinary() {
 
             let divided = []
@@ -69,6 +95,10 @@ class Binary {
             return divided
         }
         
+        /**
+         * Since the hexadecimal has a different value,
+         * this function evaluates the decimal value 
+         * into its corresponding letter. */
         function getHex(decimal) {
 
             switch(decimal) {

@@ -1,10 +1,12 @@
+// Defined classes for conversion
 import Binary from '../Javascripts/Binary'
 import Decimal from '../Javascripts/Decimal'
 import Octal from '../Javascripts/Octal'
 import Hexadecimal from '../Javascripts/Hexadecimal'
+// Defined formatter for every number system.
 import {formatBinary, formatDecimal, formatOctal, formatHexadecimal} from '../Javascripts/Format'
 
-function Results({dropdownValue, textfieldValue, setBinary, setDecimal, setOctal, setHexadecimal}) {
+function Results({dropdownValue, textfieldValue}) {
 
 
     return (

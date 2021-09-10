@@ -261,6 +261,12 @@ footer section .footer-caption {
   color: #ffd45e;
 }
 
+@media only screen and (min-width: 568px) {
+  footer section .footer-caption {
+    width: 50ch;
+  }
+}
+
 footer nav {
   display: -webkit-box;
   display: -ms-flexbox;

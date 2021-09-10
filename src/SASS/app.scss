@@ -140,6 +140,9 @@ footer {
     .footer-caption {
       font-weight: bold;
       color: rgb(255, 212, 94);
+      @include mediaQuery(568px) {
+        width: 50ch;
+      }
     }
   }
 

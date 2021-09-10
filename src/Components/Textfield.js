@@ -2,6 +2,22 @@ import React, {useEffect} from 'react'
 
 function Textfield({dropdownValue, textfieldValue, setTextfieldValue}) {
 
+    /**
+     * ===============================
+     * useEffect that triggers when the dropdown value
+     * changes. It sets a new regex pattern for every 
+     * number system to prevent the user to input an
+     * invalid value based on the selected number system.
+     * 
+     * Example is: Binary Number System only accepts
+     * '1' and '0' value.
+     * 
+     * so the regex /[^10]/ig correspons to match the
+     * value that is not within the square brackets.
+     * 
+     * If the both condition is true, then the 
+     * textfield value changes to its previous value.
+     * =============================== */
     useEffect(() => {
         if (dropdownValue ==='Binary' &&  textfieldValue.match(/[^10]/ig)) {
             setTextfieldValue(prevValue => prevValue.slice(0, prevValue.length - 1))
