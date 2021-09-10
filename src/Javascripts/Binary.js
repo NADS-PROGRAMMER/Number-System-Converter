@@ -22,7 +22,7 @@ class Binary {
     }
 
     static toOctal = (binary) => {
-
+        // 1 0100 1101 1001
         let decimalValue = Binary.toDecimal(binary)
         let octal = '';
 

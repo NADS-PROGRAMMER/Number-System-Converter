@@ -63,3 +63,5 @@ class Decimal {
         return Decimal.reverse(hexadecimal)
     }
 }
+
+export default Decimal
